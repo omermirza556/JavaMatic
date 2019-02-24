@@ -1,13 +1,18 @@
 package com.company;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class Main {
+    static PrintStream out = new PrintStream(System.out);
 
     public static void main(String[] args) {
-        for (int i = 0; i < args.length; i++) {
 
+        for (String unit : args){
+            System.out.println(unit);
         }
+
+        out.println("Hello world");
     }
 }
 
@@ -110,6 +115,7 @@ abstract class Drink {
 
     /**
      * Perhaps use this section to continuously add drinks? or perhaps a custom drink class?
+     * The issue is that I will then have to make a method that displays everything in alphabetical order
      */
 
     public class CustomDrink extends Drink {
