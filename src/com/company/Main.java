@@ -86,7 +86,7 @@ abstract class Drink {
                 drinkIngredient.add(new Ingredient.Espresso());
             }
             drinkIngredient.add(new Ingredient.SteamedMilk());
-            this.name = "Caffee Latte";
+            this.name = "Caffe Latte";
         }
     }
 
