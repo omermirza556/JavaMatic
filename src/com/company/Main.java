@@ -7,16 +7,167 @@ import java.lang.Math;
 public class Main {
     static PrintStream out = new PrintStream(System.out);
 
+//    public static ArrayList<Ingredient> coffee = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> decafCoffee = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> sugar = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> cream = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> steamedMilk = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> foamedMilk = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> espresso = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> cocoa = new ArrayList<Ingredient>();
+//    public static ArrayList<Ingredient> whippedCream = new ArrayList<Ingredient>();
+
+    public static ArrayList<Integer> coffee = new ArrayList<Integer>();
+    public static ArrayList<Integer> decafCoffee = new ArrayList<Integer>();
+    public static ArrayList<Integer> sugar = new ArrayList<Integer>();
+    public static ArrayList<Integer> cream = new ArrayList<Integer>();
+    public static ArrayList<Integer> steamedMilk = new ArrayList<Integer>();
+    public static ArrayList<Integer> foamedMilk = new ArrayList<Integer>();
+    public static ArrayList<Integer> espresso = new ArrayList<Integer>();
+    public static ArrayList<Integer> cocoa = new ArrayList<Integer>();
+    public static ArrayList<Integer> whippedCream = new ArrayList<Integer>();
+
+    /*
+    TODO: I will have to implement some sort of FILE IO system for the ingredients
+     */
     public static void main(String[] args) {
 
-        for (String unit : args){
-            System.out.println(unit);
+
+    }
+
+
+//    /**
+//     * This method will be used to determine whether the user can make a drink or not
+//     *
+//     * @param number the number of the drink item
+//     * @return whether or not the user can make the drink
+//     */
+//
+//    public static boolean canIMakeDrink(int number) {
+//        //[int amountOfCoffee, amountOfDecaf, amountOfSugar, amountOfCream, amountOfSteamedMilk, amountOfFoamedMilk, amountOfEspresso, amountOfCocoa, amountOfWhippedCream;
+//
+//        switch (number) {
+//            /*
+//            case 1 is regular coffee
+//             */
+//            case 1:
+//                break;
+//            /*
+//            case 2 is decaf coffee
+//             */
+//            case 2:
+//                break;
+//            /*
+//            case 3 is caffe latte
+//             */
+//            case 3:
+//                break;
+//            /*
+//            case 4 is caffe americano
+//             */
+//            case 4:
+//                break;
+//            /*
+//            case 5 is caffe mocha
+//             */
+//            case 5:
+//                break;
+//            /*
+//            case 6 is cappuccino
+//             */
+//            case 6:
+//                break;
+//            /*
+//
+//             */
+//            default:
+//                return false;
+//        }
+//        return false;
+//    }
+
+
+//    /**
+//     * This method will restock all the ingredients
+//     */
+//    public static void restock() {
+//        while (coffee.size() < 10) {
+//            coffee.add(new Ingredient.Coffee());
+//        }
+//
+//        while (decafCoffee.size() < 10) {
+//            decafCoffee.add(new Ingredient.DecafCoffee());
+//        }
+//
+//        while (sugar.size() < 10) {
+//            sugar.add(new Ingredient.Sugar());
+//        }
+//
+//        while (cream.size() < 10) {
+//            cream.add(new Ingredient.Cream());
+//        }
+//
+//        while (steamedMilk.size() < 10) {
+//            steamedMilk.add(new Ingredient.SteamedMilk());
+//        }
+//
+//        while (foamedMilk.size() < 10) {
+//            foamedMilk.add(new Ingredient.FoamedMilk());
+//        }
+//
+//        while (espresso.size() < 10) {
+//            espresso.add(new Ingredient.Espresso());
+//        }
+//        while (cocoa.size() < 10) {
+//            cocoa.add(new Ingredient.Cocoa());
+//        }
+//        while (whippedCream.size() < 10) {
+//            whippedCream.add(new Ingredient.WhippedCream());
+//        }
+//
+//    }
+
+    /**
+     * This method will restock all the ingredients
+     */
+    public static void restock() {
+        while (coffee.size() < 10) {
+            coffee.add(1);
         }
 
+        while (decafCoffee.size() < 10) {
+            decafCoffee.add(1);
+        }
 
+        while (sugar.size() < 10) {
+            sugar.add(1);
+        }
 
-        out.println("Hello world");
+        while (cream.size() < 10) {
+            cream.add(1);
+        }
+
+        while (steamedMilk.size() < 10) {
+            steamedMilk.add(1);
+        }
+
+        while (foamedMilk.size() < 10) {
+            foamedMilk.add(1);
+        }
+
+        while (espresso.size() < 10) {
+            espresso.add(1);
+        }
+        while (cocoa.size() < 10) {
+            cocoa.add(1);
+        }
+        while (whippedCream.size() < 10) {
+            whippedCream.add(1);
+        }
+
     }
+
+
 }
 
 /**
@@ -48,18 +199,18 @@ abstract class Drink {
         /*
          *This portion of code is used to remove floating point errors
          */
-        return Math.floor(price * 100)/100;
+        return Math.floor(price * 100) / 100;
 
 
     }
 
-    public String returnName(){
+    public String returnName() {
         return name;
     }
 
     public static class Coffee extends Drink {
         public Coffee() {
-            for(int i = 0; i<3; i++){
+            for (int i = 0; i < 3; i++) {
                 drinkIngredient.add(new Ingredient.Coffee());
             }
             drinkIngredient.add(new Ingredient.Sugar());
@@ -71,7 +222,7 @@ abstract class Drink {
 
     public static class DecafCoffee extends Drink {
         public DecafCoffee() {
-            for(int i = 0; i<3; i++){
+            for (int i = 0; i < 3; i++) {
                 drinkIngredient.add(new Ingredient.DecafCoffee());
             }
             drinkIngredient.add(new Ingredient.Sugar());
@@ -82,7 +233,7 @@ abstract class Drink {
 
     public static class CaffeLatte extends Drink {
         public CaffeLatte() {
-            for(int i = 0; i<2; i++){
+            for (int i = 0; i < 2; i++) {
                 drinkIngredient.add(new Ingredient.Espresso());
             }
             drinkIngredient.add(new Ingredient.SteamedMilk());
@@ -92,7 +243,7 @@ abstract class Drink {
 
     public static class CaffeAmericano extends Drink {
         public CaffeAmericano() {
-            for(int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++) {
                 drinkIngredient.add(new Ingredient.Espresso());
             }
             this.name = "Caffe Americano";
@@ -111,7 +262,7 @@ abstract class Drink {
 
     public static class Cappuccino extends Drink {
         public Cappuccino() {
-            for(int i = 0; i < 2; i++){
+            for (int i = 0; i < 2; i++) {
                 drinkIngredient.add(new Ingredient.Espresso());
             }
             drinkIngredient.add(new Ingredient.SteamedMilk());
@@ -126,8 +277,8 @@ abstract class Drink {
      */
 
     public static class CustomDrink extends Drink {
-        public CustomDrink(String name, ArrayList<Ingredient> theIngredients){
-            for(Ingredient unit : theIngredients){
+        public CustomDrink(String name, ArrayList<Ingredient> theIngredients) {
+            for (Ingredient unit : theIngredients) {
                 this.drinkIngredient.add(unit);
             }
             this.name = name;
