@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DrinkTest {
@@ -85,6 +86,33 @@ class DrinkTest {
 
 
 
+    }
+
+    /**
+     * This test checks if the subclassing works correctly
+     */
+    @Test
+    public void classTest(){
+        Drink a = new Drink.Coffee();
+        Drink b = new Drink.DecafCoffee();
+        Drink c = new Drink.CaffeLatte();
+        Drink d = new Drink.CaffeAmericano();
+        Drink e = new Drink.CaffeMocha();
+        Drink f = new Drink.Cappuccino();
+
+        out.println(a.getClass());
+        out.println(b.getClass());
+        out.println(c.getClass());
+        out.println(d.getClass());
+        out.println(e.getClass());
+        out.println(f.getClass());
+
+        assertTrue(a instanceof Drink.Coffee);
+        assertFalse(a instanceof Drink.DecafCoffee);
+
+        assertTrue(c instanceof Drink);
+        assertTrue(c instanceof Drink.CaffeLatte);
+        assertFalse(c instanceof Drink.CaffeMocha);
     }
 
 

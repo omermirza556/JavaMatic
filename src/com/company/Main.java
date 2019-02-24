@@ -7,15 +7,6 @@ import java.lang.Math;
 public class Main {
     static PrintStream out = new PrintStream(System.out);
 
-//    public static ArrayList<Ingredient> coffee = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> decafCoffee = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> sugar = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> cream = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> steamedMilk = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> foamedMilk = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> espresso = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> cocoa = new ArrayList<Ingredient>();
-//    public static ArrayList<Ingredient> whippedCream = new ArrayList<Ingredient>();
 
     public static ArrayList<Integer> coffee = new ArrayList<Integer>();
     public static ArrayList<Integer> decafCoffee = new ArrayList<Integer>();
@@ -35,97 +26,63 @@ public class Main {
 
     }
 
+    /**
+     * This method will determine whether it is possible to construct a drink or not
+     * @param theDrink the chosen beverage
+     * @return whether the drink can be made or not
+     */
+    public static boolean canIMakeDrink(Drink theDrink) {
 
-//    /**
-//     * This method will be used to determine whether the user can make a drink or not
-//     *
-//     * @param number the number of the drink item
-//     * @return whether or not the user can make the drink
-//     */
-//
-//    public static boolean canIMakeDrink(int number) {
-//        //[int amountOfCoffee, amountOfDecaf, amountOfSugar, amountOfCream, amountOfSteamedMilk, amountOfFoamedMilk, amountOfEspresso, amountOfCocoa, amountOfWhippedCream;
-//
-//        switch (number) {
-//            /*
-//            case 1 is regular coffee
-//             */
-//            case 1:
-//                break;
-//            /*
-//            case 2 is decaf coffee
-//             */
-//            case 2:
-//                break;
-//            /*
-//            case 3 is caffe latte
-//             */
-//            case 3:
-//                break;
-//            /*
-//            case 4 is caffe americano
-//             */
-//            case 4:
-//                break;
-//            /*
-//            case 5 is caffe mocha
-//             */
-//            case 5:
-//                break;
-//            /*
-//            case 6 is cappuccino
-//             */
-//            case 6:
-//                break;
-//            /*
-//
-//             */
-//            default:
-//                return false;
-//        }
-//        return false;
-//    }
+        int amountOfCoffee = 0, amountOfDecaf = 0, amountOfSugar = 0, amountOfCream = 0, amountOfSteamedMilk = 0, amountOfFoamedMilk = 0, amountOfEspresso = 0, amountOfCocoa = 0, amountOfWhippedCream = 0;
+
+        for (Ingredient unit : theDrink.returnDrinkIngredient()) {
+
+            if (unit instanceof Ingredient.Coffee) {
+                amountOfCoffee++;
+            }
+
+            if (unit instanceof Ingredient.DecafCoffee) {
+                amountOfDecaf++;
+            }
+
+            if (unit instanceof Ingredient.Sugar) {
+                amountOfSugar++;
+            }
+
+            if (unit instanceof Ingredient.Cream) {
+                amountOfCream++;
+
+            }
+
+            if (unit instanceof Ingredient.SteamedMilk) {
+                amountOfSteamedMilk++;
+            }
+
+            if (unit instanceof Ingredient.FoamedMilk) {
+                amountOfFoamedMilk++;
+            }
+
+            if (unit instanceof Ingredient.Espresso) {
+                amountOfEspresso++;
+            }
+
+            if (unit instanceof Ingredient.Cocoa) {
+                amountOfCocoa++;
+            }
+
+            if (unit instanceof Ingredient.WhippedCream) {
+                amountOfWhippedCream++;
+            }
+        }
 
 
-//    /**
-//     * This method will restock all the ingredients
-//     */
-//    public static void restock() {
-//        while (coffee.size() < 10) {
-//            coffee.add(new Ingredient.Coffee());
-//        }
-//
-//        while (decafCoffee.size() < 10) {
-//            decafCoffee.add(new Ingredient.DecafCoffee());
-//        }
-//
-//        while (sugar.size() < 10) {
-//            sugar.add(new Ingredient.Sugar());
-//        }
-//
-//        while (cream.size() < 10) {
-//            cream.add(new Ingredient.Cream());
-//        }
-//
-//        while (steamedMilk.size() < 10) {
-//            steamedMilk.add(new Ingredient.SteamedMilk());
-//        }
-//
-//        while (foamedMilk.size() < 10) {
-//            foamedMilk.add(new Ingredient.FoamedMilk());
-//        }
-//
-//        while (espresso.size() < 10) {
-//            espresso.add(new Ingredient.Espresso());
-//        }
-//        while (cocoa.size() < 10) {
-//            cocoa.add(new Ingredient.Cocoa());
-//        }
-//        while (whippedCream.size() < 10) {
-//            whippedCream.add(new Ingredient.WhippedCream());
-//        }
-//
-//    }
+        if (amountOfCoffee <= coffee.size() && amountOfDecaf <= decafCoffee.size() && amountOfSugar <= sugar.size() && amountOfCream <= cream.size() && amountOfSteamedMilk <= steamedMilk.size() && amountOfFoamedMilk <= foamedMilk.size() && amountOfEspresso <= espresso.size() && amountOfCocoa <= cocoa.size() && amountOfWhippedCream <= whippedCream.size()) {
+            return true;
+        }
+
+
+        return false;
+    }
 
     /**
      * This method will restock all the ingredients
@@ -167,6 +124,50 @@ public class Main {
 
     }
 
+    /**
+     * this method removes elements from the arraylists based on the ingredients in a drink
+     */
+    public static void removeFromArrays(ArrayList<Ingredient> thelist) {
+        for (Ingredient unit : thelist) {
+            if (unit instanceof Ingredient.Coffee) {
+                coffee.remove(coffee.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.DecafCoffee) {
+                decafCoffee.remove(decafCoffee.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.Sugar) {
+                sugar.remove(sugar.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.Cream) {
+                cream.remove(cream.size() - 1);
+
+            }
+
+            if (unit instanceof Ingredient.SteamedMilk) {
+                steamedMilk.remove(steamedMilk.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.FoamedMilk) {
+                foamedMilk.remove(foamedMilk.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.Espresso) {
+                espresso.remove(espresso.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.Cocoa) {
+                cocoa.remove(cocoa.size() - 1);
+            }
+
+            if (unit instanceof Ingredient.WhippedCream) {
+                whippedCream.remove(whippedCream.size() - 1);
+            }
+        }
+    }
+
 
 }
 
@@ -202,6 +203,10 @@ abstract class Drink {
         return Math.floor(price * 100) / 100;
 
 
+    }
+
+    public ArrayList<Ingredient> returnDrinkIngredient() {
+        return drinkIngredient;
     }
 
     public String returnName() {
