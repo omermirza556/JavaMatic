@@ -24,6 +24,7 @@ public class Main {
     public static void main(String[] args) {
 
 
+
     }
 
     /**
@@ -166,6 +167,13 @@ public class Main {
                 whippedCream.remove(whippedCream.size() - 1);
             }
         }
+    }
+
+    /**
+     * helper method to allow for just pluging in the drink object
+     */
+    public static void removeFromArrays(Drink theDrink){
+        removeFromArrays(theDrink.returnDrinkIngredient());
     }
 
 
