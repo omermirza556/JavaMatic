@@ -2,6 +2,7 @@ package com.company;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class Main {
     static PrintStream out = new PrintStream(System.out);
@@ -11,6 +12,8 @@ public class Main {
         for (String unit : args){
             System.out.println(unit);
         }
+
+
 
         out.println("Hello world");
     }
@@ -33,7 +36,7 @@ abstract class Drink {
      *
      * @return the price of the beverage
      */
-    public double CalculatePrice() {
+    public double calculatePrice() {
         double price = 0;
         if (drinkIngredient != null && !drinkIngredient.isEmpty()) {
 
@@ -42,15 +45,19 @@ abstract class Drink {
             }
 
         }
+        /*
+         *This portion of code is used to remove floating point errors
+         */
+        return Math.floor(price * 100)/100;
 
-        return price;
+
     }
 
     public String returnName(){
         return name;
     }
 
-    public class Coffee extends Drink {
+    public static class Coffee extends Drink {
         public Coffee() {
             for(int i = 0; i<3; i++){
                 drinkIngredient.add(new Ingredient.Coffee());
@@ -62,7 +69,7 @@ abstract class Drink {
         }
     }
 
-    public class DecafCoffee extends Drink {
+    public static class DecafCoffee extends Drink {
         public DecafCoffee() {
             for(int i = 0; i<3; i++){
                 drinkIngredient.add(new Ingredient.DecafCoffee());
@@ -73,7 +80,7 @@ abstract class Drink {
         }
     }
 
-    public class CaffeLatte extends Drink {
+    public static class CaffeLatte extends Drink {
         public CaffeLatte() {
             for(int i = 0; i<2; i++){
                 drinkIngredient.add(new Ingredient.Espresso());
@@ -83,7 +90,7 @@ abstract class Drink {
         }
     }
 
-    public class CaffeAmericano extends Drink {
+    public static class CaffeAmericano extends Drink {
         public CaffeAmericano() {
             for(int i = 0; i < 3; i++){
                 drinkIngredient.add(new Ingredient.Espresso());
@@ -92,7 +99,7 @@ abstract class Drink {
         }
     }
 
-    public class CaffeMocha extends Drink {
+    public static class CaffeMocha extends Drink {
         public CaffeMocha() {
             drinkIngredient.add(new Ingredient.Espresso());
             drinkIngredient.add(new Ingredient.Cocoa());
@@ -102,7 +109,7 @@ abstract class Drink {
         }
     }
 
-    public class Cappuccino extends Drink {
+    public static class Cappuccino extends Drink {
         public Cappuccino() {
             for(int i = 0; i < 2; i++){
                 drinkIngredient.add(new Ingredient.Espresso());
@@ -118,7 +125,7 @@ abstract class Drink {
      * The issue is that I will then have to make a method that displays everything in alphabetical order
      */
 
-    public class CustomDrink extends Drink {
+    public static class CustomDrink extends Drink {
         public CustomDrink(String name, ArrayList<Ingredient> theIngredients){
             for(Ingredient unit : theIngredients){
                 this.drinkIngredient.add(unit);

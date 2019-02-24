@@ -16,7 +16,6 @@ class IngredientTest {
 
     /**
      * For this test I wanted to test whether the correct price is displayed for each of the ingredients
-     * <p>
      * NOTE: I am not using polymorphism for this test
      */
     @Test
