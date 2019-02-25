@@ -1,13 +1,31 @@
 package com.company;
 
 import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.lang.Math;
+import java.util.Scanner;
 
+/**
+ * In order to run the class you have to navigate to out -> production -> MirzaJavaMatic
+ *
+ * and then run java com.company.Main in terminal/cmd
+ *
+ *
+ */
 public class Main {
     static PrintStream out = new PrintStream(System.out);
+    static Scanner in = new Scanner(System.in);
 
 
+    /*
+    These arraylists will keep track of how many items are in the inventory.
+    The trick I have used however is instead of using the objects I am simply using integers
+
+     */
     public static ArrayList<Integer> coffee = new ArrayList<Integer>();
     public static ArrayList<Integer> decafCoffee = new ArrayList<Integer>();
     public static ArrayList<Integer> sugar = new ArrayList<Integer>();
@@ -22,6 +40,112 @@ public class Main {
     TODO: I will have to implement some sort of FILE IO system for the ingredients
      */
     public static void main(String[] args) {
+        /*
+        This number format is used to make the prices show the ending 0
+         */
+        NumberFormat form = new DecimalFormat("#0.00");
+        restock();
+
+        /*
+        This code continuously runs until the user inputs q to quit out of the system
+         */
+        while(true){
+            out.println("*******************************************************");
+            out.println("**************************************************");
+            out.println("*******************************************************");
+            out.println("INVENTORY");
+            out.println("       Cocoa," + cocoa.size());
+            out.println("       Coffee," +coffee.size());
+            out.println("       Cream," + cream.size());
+            out.println("       Decaf Coffee," + decafCoffee.size());
+            out.println("       Espresso," +espresso.size());
+            out.println("       Foamed Milk," + foamedMilk.size());
+            out.println("       Steamed Milk," + steamedMilk.size());
+            out.println("       Sugar," + sugar.size());
+            out.println("       Whipped Cream," + whippedCream.size());
+
+            out.println("MENU:");
+            out.println("       1,Caffe Americano,$" + (form.format(new Drink.CaffeAmericano().calculatePrice())) + "," + canIMakeDrink(new Drink.CaffeAmericano()));
+            out.println("       2,Caffe Latte,$" + (form.format(new Drink.CaffeLatte().calculatePrice())) + "," + canIMakeDrink(new Drink.CaffeLatte()));
+            out.println("       3,Caffe Mocha,$" + (form.format(new Drink.CaffeMocha().calculatePrice())) + "," + canIMakeDrink(new Drink.CaffeMocha()));
+            out.println("       4,Cappuccino,$" + (form.format(new Drink.Cappuccino().calculatePrice())) + "," + canIMakeDrink(new Drink.Cappuccino()));
+            out.println("       5,Coffee,$" + (form.format(new Drink.Coffee().calculatePrice())) + "," + canIMakeDrink(new Drink.Coffee()));
+            out.println("       6,Decaf Coffee,$" + (form.format(new Drink.DecafCoffee().calculatePrice())) + "," + canIMakeDrink(new Drink.DecafCoffee()));
+            out.println("\nPlease Make a selection 1 through 6 or press r to restock and q to quit the program");
+            String i = in.nextLine();
+
+            if(i.equalsIgnoreCase("q")){
+                System.exit(0);
+            }
+
+            if(i.equalsIgnoreCase("r")){
+                restock();
+            }
+
+            if(i.equalsIgnoreCase("1")){
+                Drink a = new Drink.CaffeAmericano();
+                if(canIMakeDrink(a)){
+                    removeFromArrays(a);
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+            if(i.equalsIgnoreCase("2")){
+                Drink b = new Drink.CaffeLatte();
+                if(canIMakeDrink(b)){
+                    removeFromArrays(b);
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+            if(i.equalsIgnoreCase("3")){
+                Drink c = new Drink.CaffeMocha();
+                if(canIMakeDrink(c)){
+                    removeFromArrays(c);
+
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+            if(i.equalsIgnoreCase("4")){
+                Drink d = new Drink.Cappuccino();
+                if(canIMakeDrink(d)){
+                    removeFromArrays(d);
+
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+
+            if(i.equalsIgnoreCase("5")){
+                Drink e = new Drink.Coffee();
+                if(canIMakeDrink(e)){
+                    removeFromArrays(e);
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+            if(i.equalsIgnoreCase("6")){
+                Drink f = new Drink.DecafCoffee();
+                if(canIMakeDrink(f)){
+                    removeFromArrays(f);
+                }else{
+                    out.println("your order cannot be made");
+                }
+                continue;
+            }
+
+
+        }
+
+
+
+
 
 
 
@@ -175,6 +299,11 @@ public class Main {
     public static void removeFromArrays(Drink theDrink){
         removeFromArrays(theDrink.returnDrinkIngredient());
     }
+
+
+    /**
+     * TODO: make a method that alphabetises created drinks
+     */
 
 
 }
